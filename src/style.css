@@ -1,0 +1,58 @@
+body{
+    display:flex;
+    flex-direction: column;
+    background-color: #dd7230;
+    margin: 0;
+}
+
+
+.title{
+    display:flex;
+    padding: 2rem;
+    justify-content: center;
+    align-items: center;
+    color:aquamarine;
+    font-weight: bolder;
+    font-size: xx-large;
+}
+
+.header-logo {
+    max-height:5em;
+    max-width: 5em;
+    cursor: pointer;
+}
+
+.navbar{
+    background-color: #04030f;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.navigation{
+    padding: 0;
+}
+
+.navigation li {
+    display: inline-block;
+    cursor: pointer;
+    font-family: "Arial", sans-serif;
+    text-align:center;
+    width: 4rem;
+    font-weight: 100;
+}
+
+li{
+    color: white;
+    padding: 1rem;
+}
+
+.navigation li:hover{
+    font-weight: 900;
+}
+
+.selected{
+    color:#dd7230;
+    font-weight:bolder;
+}
