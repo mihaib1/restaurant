@@ -64,6 +64,7 @@ li{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2em;
+    padding: 1em;
 }
 
 .food-card{
@@ -73,4 +74,49 @@ li{
     justify-content: center;
     align-items: center;
     border-radius: 8px;
+    gap:1rem;
+    padding:1rem 0.5rem;
 }
+
+#contactPage {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1em;
+}
+
+.contact-page-title {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-grid{
+    display:grid;
+    gap: 2em;
+}
+
+.contact-form{
+    background-color: aqua;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.timetable{
+    background-color: azure;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.contact-details{
+    background-color: beige;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+

@@ -1,17 +1,17 @@
 
 
 const recipesPageRender = () => {
-
     let pizzaArray = []; 
     // cand avem mai multe mancaruri, le punem in array-ul pizzaArray
     // pizzaArray.forEach(function(foodObject){createFoodCard(foodObject)});
 
     class Pizza {
         productType = "Pizza";
+        basePizzaIngredients = ["Pizza de baza"];
         sizes = ["small", "medium", "large", "family"];
         constructor(name, ingredients, prices, spicy){
             this.name = name;
-            this.ingredients = basePizzaIngredients.concat(ingredients);
+            this.ingredients = this.basePizzaIngredients.concat(ingredients);
             this.prices = prices;
             this.spicy = spicy;
         }
@@ -21,10 +21,7 @@ const recipesPageRender = () => {
     }
 
     let recipesContentDiv = document.createElement("div");
-    recipesContentDiv.setAttribute("id", "recipes");
-    recipesContentDiv.textContent = "Aici vor fi retetele";
-    console.log("recipes div is here!");
-    const basePizzaIngredients = ["Pizza de baza"];
+    recipesContentDiv.setAttribute("id", "recipes");    
 
     let carnivoraPrices = {
         "small": 30,

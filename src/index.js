@@ -149,10 +149,10 @@ function removeSelectedClassForAll(){
     });
 }
 
-// functie care sa faca urmatoarele lucruri la intrare: 
+// startup function
 
-// incarca pagina home 
-// pune clasa "selected" pe home
-// default-ul va fi pagina de eroare, INAINTE DE INCARCAREA PAGINII HOME
+// load home page
+// set "selected" class for home
+// before loading home page (or even in the catch of a promise would be nice), LOAD THE ERROR PAGE;
 
 // pe 01.12.2023 -> pus img in header, facut navbar un pic mai estetic, adaugat cod pentru sters clasa de selected
