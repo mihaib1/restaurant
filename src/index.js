@@ -4,6 +4,11 @@ import {mainPageRender} from './home.js';
 import {recipesPageRender} from './recipes.js';
 import {contactPageRender} from './contact.js';
 
+const options = {
+    CONTACT_PAGE: "Contact",
+    LANDING_PAGE: "Landing",
+    RECIPES_PAGE: "Recipes"
+};
 
 const contentDiv = document.getElementById("content");
 
@@ -70,52 +75,42 @@ menuButton.addEventListener("click", function(e){
     removeSelectedClassForAll();
     menuButton.classList.add("selected");
     displayPage("Recipes");
-})
+});
 
 // end navbar buttons region
-
-// create a div in which we have the content of the page 
 
 // page-content div region
 
 const pageContent = document.createElement("div");
-pageContent.setAttribute("id", "page-content");
-pageContent.textContent = "Sa vedem daca merge mai intai. Asta va fi div-ul in care incarc html-ul din fiecare modul, deci va trebui sa ramana in index.js";
+pageContent.setAttribute("id", "page-content"); // Loading content to this div, so it should not be removed
 contentDiv.appendChild(pageContent);
+displayPage("Landing");
 
 const testBtn = document.createElement("button");
 testBtn.innerText = "Buton pentru testat diverse functii";
 testBtn.addEventListener("click", function(event){
-    displayPage("Contact");
-})
-pageContent.appendChild(testBtn);
+    //eventListener for the test button
+});
 
 // end page-content div region
 
-// should add event listeners for each element in navbar so that they call a function to clear html and display only desired content
-// other modules will return the HTML content in a variable -> pageContent.innerHTML = that variable;
+// UNCOMMENT THE LINE BELOW TO SHOW THE TEST BUTTON
+//pageContent.appendChild(testBtn);
+
+
+
 // page title, navbar and pageContent initialization should stay inside index.js; 
 // clearPage function should remain inside index.js;
 // also, I could add a fallback option to display a page when anything else couldn't be loaded (an error page); -> will stay inside index.js
 
 function clearPage() {
     pageContent.innerHTML = "";
-    console.log("Page is clear");
-    pageContent.appendChild(testBtn);
 }
-
 
 // for rendering the other pages, I should only have one function which is given a parameter.
 // inside the function the decision should be made for which page to display, depending on the given parameter;
 // idea #1: switch case -> create a const object with all the page options -> easy to maintain and add future pages
 // should never give a string as a param to the function -> there should be another object for the options
-// below should be a structure: 
-
-const options = {
-    CONTACT_PAGE: "Contact",
-    LANDING_PAGE: "Landing",
-    RECIPES_PAGE: "Recipes"
-};
 
 function displayPage(pageOption){
     clearPage();

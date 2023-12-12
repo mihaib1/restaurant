@@ -24,6 +24,8 @@ let contactPageRender = () => {
     let contactForm = document.createElement("div");
     contactForm.classList.add("contact-form");
     contactForm.textContent = "Contact form in case the user doesn't want to use phone.";
+    let formHTML = generateContactForm();
+    contactForm.appendChild(formHTML);
     // function that creates the form HTML 
     
     contactGrid.append(timetableDiv, contactDetails, contactForm);
@@ -59,3 +61,79 @@ export {contactPageRender};
     contactPageContent.appendChild(git);
 
 */
+
+
+
+// form creation below: 
+function generateContactForm(){
+    const attributes = elementAttributesContainer();
+    let formElement = document.createElement("form");
+
+    let firstName = createFormElement(attributes.firstName, "First Name");
+    formElement.append(firstName.label, firstName.formInput);
+
+    let lastName = createFormElement(attributes.lastName, "Last Name");
+    formElement.append(lastName.label, lastName.formInput);
+
+    let email = createFormElement(attributes.email, "Email");
+    formElement.append(email.label, email.formInput);
+
+    let message = createFormElement(attributes.message, "Your message", "textarea");
+    formElement.append(message.label, message.formInput); 
+
+    return formElement;
+}
+
+function createFormElement(inputObject, labelText, htmlTag = "input"){
+    let label = document.createElement("label");
+    label.textContent = labelText + ": ";
+    label.setAttribute("for", inputObject.id);
+
+    let formInput = document.createElement(htmlTag);
+    setElementAttributes(formInput, inputObject);
+    return {
+        label: label,
+        formInput: formInput
+    }
+}
+
+function setElementAttributes(element, attributes){
+    Object.keys(attributes).forEach(function(key){
+        element.setAttribute(key, attributes[key]);
+    })
+}
+
+// could move this container to a new module
+
+function elementAttributesContainer(){
+    let firstName = {
+        "id": "firstName",
+        "name": "firstName",
+        "type": "text"
+    };
+
+    let lastName = {
+        "id": "lastName",
+        "name": "lastName",
+        "type": "text"
+    };
+
+    let email = {
+        "id": "email",
+        "name": "email",
+        "type": "email"
+    };
+
+    let message = {
+        "id" : "message",
+        "name": "message",
+        "type": "textarea"
+    }
+
+    return {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        message: message
+    }
+}

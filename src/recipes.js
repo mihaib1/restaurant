@@ -7,7 +7,7 @@ const recipesPageRender = () => {
 
     class Pizza {
         productType = "Pizza";
-        basePizzaIngredients = ["Pizza de baza"];
+        basePizzaIngredients = ["pizza de baza"];
         sizes = ["small", "medium", "large", "family"];
         constructor(name, ingredients, prices, spicy){
             this.name = name;
@@ -32,21 +32,16 @@ const recipesPageRender = () => {
 
     let pizzaCarnivora = new Pizza("Carnivora", ["carnaciori taranesti", "sunca", "bacon", "pepperoni"], carnivoraPrices, false);
     pizzaArray.push(pizzaCarnivora);
-    let card1 = createFoodCard(pizzaCarnivora);
-    recipesContentDiv.appendChild(card1);
-    let card2 = createFoodCard(pizzaCarnivora);
-    recipesContentDiv.appendChild(card2);
-    let card3 = createFoodCard(pizzaCarnivora);
-    recipesContentDiv.appendChild(card3);
-    let card4 = createFoodCard(pizzaCarnivora);
-    recipesContentDiv.appendChild(card4);
+    for(let i = 0; i < 10; i++){
+        let card = createFoodCard(pizzaCarnivora);
+        recipesContentDiv.appendChild(card);
+    }
 
     return recipesContentDiv;
 }
 
 
 export {recipesPageRender};
-
 
 
 // create a function that makes a div for each element 
@@ -62,13 +57,18 @@ function createFoodCard(foodObj){
 
     const productIngredients = document.createElement("div");
     productIngredients.classList.add("product-description");
-    productIngredients.textContent = foodObj.ingredients.join(", ");
+    productIngredients.textContent = "Ingrediente: " + foodObj.ingredients.join(", ");
 
     var isSpicy = foodObj.spicy ? "Da" : "Nu";
     const spicyDiv = document.createElement("div");
     spicyDiv.textContent = "Picant : " + isSpicy;
 
-    cardDiv.append(productName, productIngredients, spicyDiv);
+    var prices = foodObj.prices;
+    console.log(foodObj.prices);
+    const pricesDiv = document.createElement("div");
+    pricesDiv.textContent = "Pret: de la " + prices.small + " de lei.";
+
+    cardDiv.append(productName, productIngredients, spicyDiv, pricesDiv);
     return cardDiv;
 }
 
