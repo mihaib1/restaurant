@@ -1,3 +1,7 @@
+import {elementAttributesContainer} from './htmlAttributes'
+
+const attributes = elementAttributesContainer();
+
 let contactPageRender = () => {
 
     let contactPageContent = document.createElement("div");
@@ -63,77 +67,49 @@ export {contactPageRender};
 */
 
 
-
-// form creation below: 
+// #region form creation
 function generateContactForm(){
-    const attributes = elementAttributesContainer();
-    let formElement = document.createElement("form");
 
-    let firstName = createFormElement(attributes.firstName, "First Name");
-    formElement.append(firstName.label, firstName.formInput);
+    let formContainer = document.createElement("div");
+    formContainer.classList.add("formContainer");
 
-    let lastName = createFormElement(attributes.lastName, "Last Name");
-    formElement.append(lastName.label, lastName.formInput);
+    let formElement = createFormDiv();
 
-    let email = createFormElement(attributes.email, "Email");
-    formElement.append(email.label, email.formInput);
+    formContainer.appendChild(formElement);
 
-    let message = createFormElement(attributes.message, "Your message", "textarea");
-    formElement.append(message.label, message.formInput); 
+    return formContainer;
+};
+
+function createFormDiv() {
+    var formElement = document.createElement("form");
+
+    Object.keys(attributes).forEach(function(attribute){
+        var elementObj = attributes[attribute];
+        let inputElement = createFormElement(elementObj);
+        formElement.append(inputElement.label, inputElement.formInput);
+    });
 
     return formElement;
 }
 
-function createFormElement(inputObject, labelText, htmlTag = "input"){
+function createFormElement(elementObject){
     let label = document.createElement("label");
-    label.textContent = labelText + ": ";
-    label.setAttribute("for", inputObject.id);
+    label.textContent = elementObject.label ? elementObject.label : "Camp de test";
+    label.setAttribute("for", elementObject.id);
 
-    let formInput = document.createElement(htmlTag);
-    setElementAttributes(formInput, inputObject);
+    let inputType = elementObject.htmlTag ? elementObject.htmlTag : "input";
+    let formInput = document.createElement(inputType);
+
+    setElementAttributes(formInput, elementObject);
+
     return {
-        label: label,
-        formInput: formInput
+        formInput: formInput,
+        label: label
     }
 }
 
 function setElementAttributes(element, attributes){
     Object.keys(attributes).forEach(function(key){
         element.setAttribute(key, attributes[key]);
-    })
-}
-
-// could move this container to a new module
-
-function elementAttributesContainer(){
-    let firstName = {
-        "id": "firstName",
-        "name": "firstName",
-        "type": "text"
-    };
-
-    let lastName = {
-        "id": "lastName",
-        "name": "lastName",
-        "type": "text"
-    };
-
-    let email = {
-        "id": "email",
-        "name": "email",
-        "type": "email"
-    };
-
-    let message = {
-        "id" : "message",
-        "name": "message",
-        "type": "textarea"
-    }
-
-    return {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        message: message
-    }
+    });
 }
