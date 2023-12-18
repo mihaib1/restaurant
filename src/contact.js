@@ -30,7 +30,6 @@ let contactPageRender = () => {
     contactForm.textContent = "Contact form in case the user doesn't want to use phone.";
     let formHTML = generateContactForm();
     contactForm.appendChild(formHTML);
-    // function that creates the form HTML 
     
     contactGrid.append(timetableDiv, contactDetails, contactForm);
 
@@ -42,13 +41,8 @@ let contactPageRender = () => {
 export {contactPageRender};
 
 
-// having separate functions is also important for security. We would not export them, so they are not accessible outside.
-
 // should add some PNGs with links to my social media. Also, could add a fake phone number / email to make it look like a contact page.
 // delivery times and how far (in KM) should be shown.
-// maybe even add a map, just for fun.
-
-// should create functions to generate some parts of HTML. atm code is extremely dirty
 
 /*
 
@@ -68,6 +62,7 @@ export {contactPageRender};
 
 
 // #region form creation
+
 function generateContactForm(){
 
     let formContainer = document.createElement("div");
@@ -113,3 +108,5 @@ function setElementAttributes(element, attributes){
         element.setAttribute(key, attributes[key]);
     });
 }
+
+// #endregion
