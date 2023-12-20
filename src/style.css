@@ -121,3 +121,43 @@ li{
     grid-column-end: 2;
 }
 
+
+.formContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.row::after{
+    display: table;
+    content: "";
+    clear:both;
+}
+
+.col-25{
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+
+.col-70{
+    float: left;
+    width: 70%;
+    margin-top: 6px;
+}
+
+input{
+    height: 2em;
+}
+
+textarea{
+    height: 4em;
+}
+
+input, textarea{
+    border-radius: 4px;
+    padding:6px;
+    border: 1px solid #ccc;
+    resize:vertical;
+    width: 100%;
+}

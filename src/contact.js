@@ -81,26 +81,28 @@ function createFormDiv() {
     Object.keys(attributes).forEach(function(attribute){
         var elementObj = attributes[attribute];
         let inputElement = createFormElement(elementObj);
-        formElement.append(inputElement.label, inputElement.formInput);
+        formElement.append(inputElement);
     });
 
     return formElement;
 }
 
 function createFormElement(elementObject){
+    let elementDiv = document.createElement("div");
+    elementDiv.classList.add(elementObject.name, "row");
     let label = document.createElement("label");
     label.textContent = elementObject.label ? elementObject.label : "Camp de test";
     label.setAttribute("for", elementObject.id);
+    label.classList.add("col-25");
 
     let inputType = elementObject.htmlTag ? elementObject.htmlTag : "input";
     let formInput = document.createElement(inputType);
+    formInput.classList.add("col-70");
 
     setElementAttributes(formInput, elementObject);
+    elementDiv.append(label, formInput);
 
-    return {
-        formInput: formInput,
-        label: label
-    }
+    return elementDiv;
 }
 
 function setElementAttributes(element, attributes){

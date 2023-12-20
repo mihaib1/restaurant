@@ -10,7 +10,7 @@ let elementAttributesContainer = function(){
         "id": "lastName",
         "name": "lastName",
         "type": "text",
-        "label": "email"
+        "label": "Last Name"
     };
 
     let email = {
