@@ -103,6 +103,7 @@ li{
     grid-row-end: 3;
     grid-column-start: 2;
     grid-column-end: 3;
+    padding: 1em;
 }
 
 .timetable{
@@ -160,4 +161,14 @@ input, textarea{
     border: 1px solid #ccc;
     resize:vertical;
     width: 100%;
+}
+
+.submitBtn{
+    border-radius: 4px;
+    padding:6px;
+    border: 1px solid #ccc;
+}
+
+.submitBtn::after {
+    content: "Submit!"
 }

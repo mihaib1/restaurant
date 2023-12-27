@@ -83,6 +83,8 @@ function createFormDiv() {
         let inputElement = createFormElement(elementObj);
         formElement.append(inputElement);
     });
+    let submitBtn = createSubmitBtn();
+    formElement.append(submitBtn);
 
     return formElement;
 }
@@ -90,6 +92,7 @@ function createFormDiv() {
 function createFormElement(elementObject){
     let elementDiv = document.createElement("div");
     elementDiv.classList.add(elementObject.name, "row");
+
     let label = document.createElement("label");
     label.textContent = elementObject.label ? elementObject.label : "Camp de test";
     label.setAttribute("for", elementObject.id);
@@ -97,12 +100,19 @@ function createFormElement(elementObject){
 
     let inputType = elementObject.htmlTag ? elementObject.htmlTag : "input";
     let formInput = document.createElement(inputType);
+
     formInput.classList.add("col-70");
 
     setElementAttributes(formInput, elementObject);
     elementDiv.append(label, formInput);
 
     return elementDiv;
+}
+
+function createSubmitBtn() {
+    let btn = document.createElement("button");
+    btn.classList.add("submitBtn");
+    return btn;
 }
 
 function setElementAttributes(element, attributes){

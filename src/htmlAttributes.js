@@ -26,7 +26,7 @@ let elementAttributesContainer = function(){
         "type": "textarea",
         "label": "Your message",
         "htmlTag": "textarea"
-    }
+    };
 
     return {
         firstName: firstName,
